@@ -13,12 +13,12 @@ class ColmenaController extends Controller
 
     public function index(Request $request)
     {
-        $query=trim($request->get('searchText')); //valida si la peticion trae el campo de busqueda 
+        $query=trim($request->get('searchText'));  //valida si la peticion trae el campo de busqueda 
         $colmenas = Colmena::with('ubicacion')
             ->where('Descripcion','LIKE','%'.$query.'%')
             ->orderby('Id_Colmena','desc')
             ->paginate(7);
-       // dd($colmenas);
+        
         return view('Colmena.index', ['colmenas'=>$colmenas,"searchText"=>$query]);
     
     }

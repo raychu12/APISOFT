@@ -23,7 +23,8 @@ Route::resource('Estado_Civil','EstadoCivilController');
 Route::resource('Ubicacion','UbicacionController');
 Route::resource('Ubicacion','UbicacionController');
 Route::resource('Colmena','ColmenaController');
-Route::resource('User','UserController');
+Route::resource('Usuario','UsuarioController');
+
 
 
 

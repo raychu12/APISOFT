@@ -19,7 +19,7 @@ class UbicacionController extends Controller
      */
     public function index(request $request)
     { 
-         if ($request)
+         if ($request) 
         {
             $query=trim($request->get('searchText'));
             $ubicacion=DB::table('ubicacions')->where('Descripcion','LIKE','%'.$query.'%')
