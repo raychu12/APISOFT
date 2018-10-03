@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UsuarioMigration extends Migration
+class CreateUsuariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class UsuarioMigration extends Migration
      */
     public function up()
     {
-        Schema::create('Usuario', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->string('Id_Usuario',12)->Unique();
             $table->string('Nombre',20);
             $table->string('Apellido1',30);
@@ -23,11 +23,11 @@ class UsuarioMigration extends Migration
             $table->string('Direccion',100);
             $table->datetime('Fecha_Ingreso');
             $table->string('Clave',20);
-            $table->integer('Id_Genero')->unsigned();;
-            $table->foreign('Id_Genero')->references('Id_Genero')->on('Genero');
-            $table->integer('Id_Rol')->nullable()->unsigned();
-            $table->foreign('Id_Rol')->references('Id_Rol')->on('Rol');
-            $table->rememberToken();
+            $table->integer('Genero_Id')->unsigned();;
+            $table->foreign('Genero_Id')->references('Id_Genero')->on('Genero');
+            $table->integer('Rol_Id')->nullable()->unsigned();
+            $table->foreign('Rol_Id')->references('Id_Rol')->on('Rol');
+           
         });
     }
 
@@ -38,6 +38,6 @@ class UsuarioMigration extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Usuario');
+        Schema::dropIfExists('usuarios');
     }
 }

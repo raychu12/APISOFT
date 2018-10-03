@@ -5,7 +5,7 @@ use App\Http\Requests\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RolFormRequest extends Request
+class UsuarioFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.

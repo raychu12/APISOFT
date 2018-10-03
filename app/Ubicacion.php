@@ -18,8 +18,5 @@ class Ubicacion extends Model
 
     
 
-    public function Colmena() 
-    {
-        return $this->hasOne('App/Colmena', 'Id_Colmena');
-    }
+   
 }
