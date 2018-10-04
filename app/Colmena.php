@@ -18,6 +18,6 @@ class Colmena extends Model
     ];
     public function ubicacion() 
     {
-        return $this->hasOne(Ubicacion::class, 'Id_Ubicacion');
+        return $this->belongsTo(Ubicacion::class, 'ubicacion_id');
     }
 }
