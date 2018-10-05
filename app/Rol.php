@@ -15,9 +15,5 @@ class Rol extends Model
 
     ];
 
-    public function usuarios() 
-    {
-        return $this->hasmany('App/Usuario', 'Id_Usuario');
-    }
-    //
+   
 }

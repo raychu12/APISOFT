@@ -84,9 +84,22 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(UsuarioFormRequest $request, $id)
     {
-      
+      $usuario= new Usuario;
+  	  $usuario->Nombre->get('Nombre');
+      $usuario->Apellido1->get('Apellido1');
+  	  $usuario->Apellido2->get('Apellido1');
+      $usuario->Telefono->get('Telefono');
+  	  $usuario->Correo->get('Correo');
+      $usuario->Direccion->get('Direccion');
+  	  $usuario->Fecha_Ingreso->get('Fecha_Ingreo');
+      $usuario->Clave->get('Clave');
+	  $usuario->Genero_Id=$request->get('Genero_Id');
+	  $usuario->Rol_Id=$request->get('Rol_Id');
+      $usuario->update();  
+
+      return redirect('Usuario');
         
     }
 

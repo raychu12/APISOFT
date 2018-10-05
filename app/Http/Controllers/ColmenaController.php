@@ -54,6 +54,7 @@ class ColmenaController extends Controller
    
     public function update(ColmenaRequestForm $request, $id)
     {
+        $ubicaciones = new Ubicacion;
         $colmena= new Colmena;
         $colmena->Descripcion=$request->get('Descripcion');
         $colmena->Cantidad=$request->get('Cantidad');
