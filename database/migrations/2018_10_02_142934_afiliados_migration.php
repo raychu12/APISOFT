@@ -28,7 +28,7 @@ class AfiliadosMigration extends Migration
             $table->integer('estado_civil_id')->nullable()->unsigned();
             $table->foreign('estado_civil_id')->references('Id_Estado_Civil')->on('Estado_Civil');
             $table->boolean('Estado');
-            $table->rememberToken();
+            
         });
     }
 

@@ -17,7 +17,7 @@
             	<div class="col-md-6">
 				<label for="ubicacion_id">Ubicacion</label>
 					<select class="form-control" id="ubicacion_id" name="ubicacion_id">
-						@foreach ($ubicacion as $ubicacion)
+						@foreach ($ubicaciones as $ubicacion)
 							<option value="{{ $ubicacion->Id_Ubicacion }}">{{ $ubicacion->Descripcion }}</option>
 						@endforeach						
 					</select>

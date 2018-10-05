@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Afiliado;
+use App\Genero;
+use App\Estado_Civil;
 use Illuminate\Http\Request;
 
 class AfiliadoController extends Controller
@@ -12,9 +14,15 @@ class AfiliadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $query=trim($request->get('searchText')); //valida si la peticion trae el campo de busqueda 
+        $afiliados = Afiliado::with('Genero', 'Estado_Civil') 
+            ->where('Nombre','LIKE','%'.$query.'%')
+            ->orderby('Id_Afiliado','desc')
+            ->paginate(7);
+         
+        return view('Afiliado.index', ['afiliados'=>$afiliados,"searchText"=>$query]);
     }
 
     /**
@@ -23,8 +31,14 @@ class AfiliadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    { 
+        $Generos = Genero::all();
+       
+        $Estados = Estado_Civil::all();
+        
+    
+        return view("Afiliado.create",["Estados"=> $Estados], ["Generos"=> $Generos]);
+        
     }
 
     /**
@@ -35,7 +49,9 @@ class AfiliadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $afiliado = Afiliado::create($request->all());
+
+        return redirect('Afiliado');  
     }
 
     /**
@@ -46,7 +62,7 @@ class AfiliadoController extends Controller
      */
     public function show(Afiliado $afiliado)
     {
-        //
+        return view ("Afiliado.show",["afiliados"=>Afiliado::findOrFail($id)]);
     }
 
     /**
@@ -57,7 +73,8 @@ class AfiliadoController extends Controller
      */
     public function edit(Afiliado $afiliado)
     {
-        //
+        $afiliado= Afiliado::find($id);
+        return view('Afiliado.edit',compact('afiliado'));
     }
 
     /**
@@ -67,9 +84,21 @@ class AfiliadoController extends Controller
      * @param  \App\Afiliado  $afiliado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Afiliado $afiliado)
+    public function update(AfiliadoFormRequest $request,  $id)
     {
-        //
+      $afiliado= new Afiliado;
+  	  $afiliado->Nombre->get('Nombre');
+      $afiliado->Apellido1->get('Apellido1');
+  	  $afiliado->Apellido2->get('Apellido1');
+      $afiliado->Telefono->get('Telefono');
+  	  $afiliado->Correo->get('Correo');
+      $afiliado->Direccion->get('Direccion');
+  	  $afiliado->Fecha_Ingreso->get('Fecha_Ingreo');
+      $afiliado->Num_Cuenta->get('Num_Cuenta');
+	  $afiliado->genero_Id=$request->get('genero_Id');
+	  $afiliado->estado_civil_id=$request->get('estado_civil_id');
+      $afiliado->update();  
+
     }
 
     /**
@@ -80,6 +109,8 @@ class AfiliadoController extends Controller
      */
     public function destroy(Afiliado $afiliado)
     {
-        //
+        $afiliado=Afiliado::findOrFail($id);
+        $afiliado->delete();
+        return redirect('Afiliado');
     }
 }

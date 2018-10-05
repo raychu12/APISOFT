@@ -28,11 +28,11 @@ class Usuario extends Model
     ];
     public function Genero() 
     {
-        return $this->hasOne(Genero::class ,'Id_Genero');
+        return $this->belongsTo(Genero::class ,'Genero_Id');
     }
 
     public function Rol() 
     {
-        return $this->hasOne(Rol::class,'Id_Rol');
+        return $this->BelongsTo(Rol::class,'Rol_Id');
     }
 }

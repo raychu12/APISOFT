@@ -24,6 +24,7 @@ Route::resource('Ubicacion','UbicacionController');
 Route::resource('Ubicacion','UbicacionController');
 Route::resource('Colmena','ColmenaController');
 Route::resource('Usuario','UsuarioController');
+Route::resource('Afiliado','AfiliadoController');
 
 
 

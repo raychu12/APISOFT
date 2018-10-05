@@ -40,7 +40,7 @@
       <td>{{$usuario->Direccion}}</td>
   		<td>{{$usuario->Fecha_Ingreso}}</td>
       <td>{{$usuario->Clave}}</td>
-			<td>{{$usuario->Genero->Descripcion->get()}}</td>
+			<td>{{$usuario->Genero->Descripcion}}</td>
 			<td>{{$usuario->Rol->Descripcion}}</td>
   		
 			

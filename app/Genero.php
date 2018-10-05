@@ -15,9 +15,5 @@ class Genero extends Model
         'Descripcion'
 
     ];
-    public function usuarios() 
-    {
-        return $this->hasmany('App/Usuario', 'Id_Usuario');
-    }
-    //
+  
 }
